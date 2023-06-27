@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+body{
+    background: #5c65e7;
+padding: 25%;
+}
+
+#container{
+    background: white;
+    width: 300px;
+    height: 350px;
+    border: 1px 1px solid rgba(167, 167, 167, 0.678) ;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+h2{
+    text-align: start;
+    border-bottom: 1px solid rgba(167, 167, 167, 0.678) ;
+}
+p{
+    text-align: start;
+}
+
+h1,h2,p,input,button{
+    margin-top: 15px;    
+}
