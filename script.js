@@ -7,8 +7,11 @@ const palavraUsuario = document.querySelector("#palavraUsuario");
 const resultadoDaPartida = document.querySelector("#resultadoDaPartida");
 
 // variaveis
-var tempoDaPartida = 10;
-
+var tempoDaPartida = 30;
+var duracaoDaPartida = 30;
+var reinicializar = 5;
+var paraCronometro = false;
+  
 // lista de palavras
 var palavras = [
     "banana", 
@@ -39,7 +42,7 @@ function embaralharPalavraSecreta(palavra){
     return palavraEmbaralhada;
 }
 
-function mostarPalavraSorteada(palavra){
+function mostarPalavraSorteada(){
     let palavraEmbaralhada = embaralharPalavraSecreta(palavraSecreta);
     mostrarPalavraSecreta.innerHTML= palavraEmbaralhada;
 }
@@ -48,7 +51,14 @@ function mostarPalavraSorteada(palavra){
 function validarResposta(){
     let resposta = palavraUsuario.value;
     let palavraIgual = palavraSecreta === resposta ? true : false;
+    if(palavraIgual){
+        paraCronometro = true;
+    }else
+    {   paraCronometro = false;
+    }
+ 
     fimDoJogo(palavraIgual);
+     
 }; 
 
 //Validar com o teclado
@@ -58,55 +68,75 @@ palavraUsuario.addEventListener("keydown", function (event) {
         console.log(resposta)
         let palavraIgual = palavraSecreta === resposta ? true : false;
         console.log(palavraIgual);
+        if(palavraIgual){
+            paraCronometro = true;
+        }else
+        {   paraCronometro = false;
+        }
         fimDoJogo(palavraIgual);
+        
     }; 
 });
 //Resultado do jogo
 function fimDoJogo(resultado){
     if(resultado){
         resultadoDaPartida.innerHTML = `Vacê acertou a palavra é ${this.palavraSecreta}`;
+        
     }else{
-        resultadoDaPartida.innerHTML = `Vacê errou a palavra é ${this.palavraSecreta}`
-    }
-} 
-// area de testes
-function reinicializarJogo(){
-console.log("Reinicializado");
-
-}
-
-//Fim do teste
- 
-//Cronometrar e sorteart palavras
-function cronometro() {
-    if(tempoDaPartida < 0){
-        tempoDaPartida = 10;
-        sortearPalavras();
-        embaralharPalavraSecreta(palavraSecreta)
-        mostarPalavraSorteada(palavraSecreta);
-        limparCampos();
+        resultadoDaPartida.innerHTML = `Vacê errou a palavra é ${this.palavraSecreta}` 
         
     }
-    mostrarCronometro.innerHTML= `Time Leff: ${tempoDaPartida}s`;
-    tempoDaPartida--;  
 } 
-setInterval(cronometro, 1000);
- 
-
 function limparCampos(){
     palavraUsuario.value = "";
     resultadoDaPartida.innerHTML = "";
-}
+    // mostarPalavraSorteada(); 
+} 
+   
+//Cronometrar e sorteart palavras
  
+function ligarCronometro(){
+    var cronometro = setInterval(()=> { 
+        if(tempoDaPartida < 0){
+            resultadoDaPartida.innerHTML = `A palavra é ${this.palavraSecreta}`
+            tempoDaPartida = duracaoDaPartida;     
+            pararCronometro();
+            clearInterval(cronometro);
+        } 
+
+        if(paraCronometro){ 
+            tempoDaPartida = duracaoDaPartida;  
+            validarResposta();
+            pararCronometro();
+            clearInterval(cronometro);
+            paraCronometro = false;
+            console.log("Passou");
  
-function acompanharFunçoes(){
-    mostarPalavraSorteada
-    limparCampos
-    validarResposta
-    cronometro
-    embaralharPalavraSecreta
-    sortearPalavras
-    fimDoJogo
+        }else {
+                mostrarCronometro.innerHTML= `Time Leff: ${tempoDaPartida}s`;
+                tempoDaPartida--;    
+                }
+    },1000);
 }
 
-mostarPalavraSorteada();
+ // pausa o intervalo após 5 segundos
+function pararCronometro(){
+    //clearInterval(this.cronometro);
+    console.log("desligando Cronomento");
+    setTimeout(() => {
+        start(); 
+        console.log("ligando Cronomento");
+      }, 5000);
+}
+  
+function start(){
+    console.log("entrei em start");
+    limparCampos();
+    ligarCronometro();
+    sortearPalavras();
+    embaralharPalavraSecreta(palavraSecreta)
+    mostarPalavraSorteada();
+}
+ 
+start();
+  

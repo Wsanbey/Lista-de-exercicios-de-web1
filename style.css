@@ -3,28 +3,59 @@
     padding: 0;
     flex-wrap: wrap;
 }
-body{
+body{ 
     background: #5c65e7;
-padding: 25%;
+     
+    margin: 0 auto ;
 }
 
 #container{
-    background: white;
-    width: 300px;
-    height: 350px;
+    background: white; 
+    padding: 5px;
+    width: 400px;
+    height: 400px;
+    margin: 85px auto ;
     border: 1px 1px solid rgba(167, 167, 167, 0.678) ;
-    border-radius: 5px;
-    text-align: center;
-    
+    border-radius: 5px ;
+    text-align: center; 
 }
 h2{
     text-align: start;
     border-bottom: 1px solid rgba(167, 167, 167, 0.678) ;
+    
 }
-p{
-    text-align: start;
+h1{
+    letter-spacing: 15px;
+}
+h1,h2,p,button,input{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin-top:25px ;
+     
 }
 
-h1,h2,p,input,button{
-    margin-top: 15px;    
+button{
+    font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  width: 190px;
+  height: 35px;
+  background-color: #0066b8;
+  padding: 9px 50px;
+  border: none;
+  color: white;
+  border-radius: 5px ;
 }
+input{
+    border: 2px solid black; 
+    
+    font-size: 25px;
+    border-radius: 5px ;
+}
+#resultadoDaPartida{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+ 
+
+
+ 
