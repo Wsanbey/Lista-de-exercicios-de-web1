@@ -14,16 +14,21 @@ var paraCronometro = false;
   
 // lista de palavras
 var palavras = [
-    "banana", 
-    "laranja", 
-    "legal",
-    "manga", 
-    "abacaxi", 
-    "morango",  
-    "tio", 
-    "melancia",  
-    "tangerina", 
-    "geo"
+"Abacate",
+"Banana",
+"Cenoura",
+"Dinossauro",
+"Elefante",
+"Futebol",
+"Girafa",
+"Hipopótamo",
+"Igreja",
+"Jardim",
+"Karatê",
+"Laranja",
+"Mamão",
+"Nuvem",
+"Ovelha"
 ];
 
 //Sorteando plavras do array
@@ -80,10 +85,12 @@ palavraUsuario.addEventListener("keydown", function (event) {
 //Resultado do jogo
 function fimDoJogo(resultado){
     if(resultado){
-        resultadoDaPartida.innerHTML = `Vacê acertou a palavra é ${this.palavraSecreta}`;
+        resultadoDaPartida.innerHTML = `Você acertou! a palavra é:<br><strong> ${this.palavraSecreta}</strong>`;
         
     }else{
-        resultadoDaPartida.innerHTML = `Vacê errou a palavra é ${this.palavraSecreta}` 
+        //Caso queira que apresente a palavra ao errar usar a linha abaixo!
+        //resultadoDaPartida.innerHTML = `Você errou a palavra é ${this.palavraSecreta}` 
+        resultadoDaPartida.innerHTML = "Você errou a palavra tente novamento"; 
         
     }
 } 
@@ -98,12 +105,11 @@ function limparCampos(){
 function ligarCronometro(){
     var cronometro = setInterval(()=> { 
         if(tempoDaPartida < 0){
-            resultadoDaPartida.innerHTML = `A palavra é ${this.palavraSecreta}`
+            resultadoDaPartida.innerHTML = `Tempo esgotado! A palavra é: <br><strong> ${this.palavraSecreta}</strong>`
             tempoDaPartida = duracaoDaPartida;     
             pararCronometro();
             clearInterval(cronometro);
         } 
-
         if(paraCronometro){ 
             tempoDaPartida = duracaoDaPartida;  
             validarResposta();
@@ -111,7 +117,6 @@ function ligarCronometro(){
             clearInterval(cronometro);
             paraCronometro = false;
             console.log("Passou");
- 
         }else {
                 mostrarCronometro.innerHTML= `Time Leff: ${tempoDaPartida}s`;
                 tempoDaPartida--;    

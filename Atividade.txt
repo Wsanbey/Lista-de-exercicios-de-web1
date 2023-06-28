@@ -1,0 +1,19 @@
+1. Implementar uma aplicação onde o usuário deve adivinhar uma palavra secreta gerada aleatoriamente. A aplicação embaralha as letras da palavra e apresenta essa informação para o usuário que
+tem um tempo limitado (timer ) para adivinhar a palavra.
+(a) (1,5) A página deve apresentar as letras embaralhadas, o tempo restante (timer ), um campo
+para o usuário informar a palavra, um campo de mensagem, um botão para embaralhar a
+palavra e um botão para verificar a palavra informada.
+(b) (1,0) Ao clicar no primeiro botão, embaralhar novamente a palavra e apresentá-la na tela.
+(c) (1,5) O usuário possui 30 segundos para identificar a palavra. Apresentar o tempo restante
+no campo respectivo, diminuindo ele a cada um segundo.
+(d) (1,0) Ao clicar no segundo botão ou pressionar a tecla ENTER, comparar a palavra informada
+pelo usuário com a palavra aleatória gerada pela aplicação.
+i. (1,0) Caso a palavra informada pelo usuário esteja incorreta, apresentar uma mensagem
+no campo respectivo.
+ii. (1,0) Caso a palavra informada pelo usuário esteja correta, apresentar uma mensagem
+no campo respectivo.
+(e) (1,5) Caso o tempo disponível (timer ) tenha transcorrido e o usuário não tenha descoberto a
+palavra, apresentar uma mensagem informando a palavra aleatória.
+(f) (1,5) Caso o usuário tenha acertado a palavra ou o tempo tenha transcorrido sem ele acertar
+a palavra, depois de 5 segundos, reiniciar o jogo com uma nova palavra, limpando o campo
+de mensagens e reiniciando o timer
